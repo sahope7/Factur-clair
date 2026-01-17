@@ -52,37 +52,37 @@ const Dashboard = () => {
       title: 'Total Factures',
       value: stats?.totalFactures || 0,
       icon: FiFileText,
-      color: '#3498db',
+      colorClass: 'primary',
     },
     {
       title: 'Factures Payées',
       value: stats?.facturesPayees || 0,
       icon: FiCheckCircle,
-      color: '#27ae60',
+      colorClass: 'success',
     },
     {
       title: 'Factures Non Payées',
       value: stats?.facturesNonPayees || 0,
       icon: FiXCircle,
-      color: '#e74c3c',
+      colorClass: 'danger',
     },
     {
       title: 'Chiffre d\'Affaires',
       value: `${(stats?.chiffreAffaires || 0).toFixed(2)} €`,
       icon: FiDollarSign,
-      color: '#f39c12',
+      colorClass: 'warning',
     },
     {
       title: 'Total Clients',
       value: stats?.totalClients || 0,
       icon: FiUsers,
-      color: '#9b59b6',
+      colorClass: 'primary',
     },
     {
       title: 'Total Produits',
       value: stats?.totalProduits || 0,
       icon: FiPackage,
-      color: '#1abc9c',
+      colorClass: 'primary',
     },
   ];
 
@@ -105,7 +105,7 @@ const Dashboard = () => {
             const Icon = card.icon;
             return (
               <div key={index} className="stat-card">
-                <div className="stat-icon" style={{ backgroundColor: `${card.color}20`, color: card.color }}>
+                <div className={`stat-icon ${card.colorClass}`}>
                   <Icon />
                 </div>
                 <div className="stat-content">
@@ -128,9 +128,9 @@ const Dashboard = () => {
               <Line
                 type="monotone"
                 dataKey="revenus"
-                stroke="#667eea"
+                stroke="#1e3a8a"
                 strokeWidth={2}
-                dot={{ fill: '#667eea', r: 4 }}
+                dot={{ fill: '#1e3a8a', r: 4 }}
               />
             </LineChart>
           </ResponsiveContainer>

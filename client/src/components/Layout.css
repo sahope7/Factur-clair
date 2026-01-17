@@ -1,13 +1,22 @@
+/* ============================================
+   LAYOUT COMPONENT - Sidebar & Topbar
+   Professional Admin Navigation
+   ============================================ */
+
 .layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f5f6fa;
+  background-color: var(--bg-main);
 }
+
+/* ============================================
+   SIDEBAR - Primary Navigation
+   ============================================ */
 
 .sidebar {
   width: 260px;
-  background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-  color: white;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-inverse);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -15,91 +24,113 @@
   left: 0;
   top: 0;
   z-index: 1000;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-slow);
+  box-shadow: var(--shadow-lg);
 }
 
 .sidebar-header {
-  padding: 20px;
+  padding: var(--spacing-xl);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .sidebar-header h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #ecf0f1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  letter-spacing: -0.025em;
 }
 
 .close-btn {
   display: none;
   background: none;
   border: none;
-  color: white;
-  font-size: 24px;
+  color: var(--text-inverse);
+  font-size: 1.5rem;
   cursor: pointer;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: var(--spacing-lg);
+  top: var(--spacing-lg);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-nav {
   flex: 1;
-  padding: 20px 0;
+  padding: var(--spacing-lg) 0;
   overflow-y: auto;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 15px 20px;
-  color: #bdc3c7;
+  padding: var(--spacing-md) var(--spacing-xl);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all var(--transition-base);
   border-left: 3px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-inverse);
 }
 
 .nav-item.active {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-  border-left-color: #3498db;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-inverse);
+  border-left-color: var(--primary-light);
+  font-weight: 600;
 }
 
 .nav-item svg {
-  margin-right: 12px;
-  font-size: 20px;
+  margin-right: var(--spacing-md);
+  font-size: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .sidebar-footer {
-  padding: 20px;
+  padding: var(--spacing-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logout-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 12px;
-  background-color: rgba(231, 76, 60, 0.2);
-  border: 1px solid rgba(231, 76, 60, 0.3);
-  color: #e74c3c;
-  border-radius: 6px;
+  padding: var(--spacing-md);
+  background-color: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: var(--danger-light);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
+  transition: all var(--transition-base);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
 }
 
 .logout-btn:hover {
-  background-color: rgba(231, 76, 60, 0.3);
-  border-color: #e74c3c;
+  background-color: rgba(220, 38, 38, 0.25);
+  border-color: var(--danger-light);
 }
 
 .logout-btn svg {
-  margin-right: 8px;
+  margin-right: var(--spacing-sm);
 }
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
 
 .main-content {
   flex: 1;
@@ -110,42 +141,54 @@
 }
 
 .topbar {
-  background: white;
-  padding: 15px 30px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--bg-card);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .menu-btn {
   display: none;
   background: none;
   border: none;
-  font-size: 24px;
-  color: #2c3e50;
+  font-size: 1.5rem;
+  color: var(--text-primary);
   cursor: pointer;
-  margin-right: 15px;
+  margin-right: var(--spacing-lg);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+
+.menu-btn:hover {
+  background-color: var(--bg-hover);
 }
 
 .page-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
 }
 
 .content {
   flex: 1;
-  padding: 30px;
+  padding: var(--spacing-xl);
 }
 
 .sidebar-overlay {
   display: none;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -176,5 +219,18 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+    backdrop-filter: blur(2px);
+  }
+
+  .content {
+    padding: var(--spacing-lg);
+  }
+
+  .topbar {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .page-title {
+    font-size: 1.25rem;
   }
 }

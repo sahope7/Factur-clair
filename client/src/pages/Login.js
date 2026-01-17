@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiLock } from 'react-icons/fi';
 import { login } from '../services/api';
 import { setAuth } from '../utils/auth';
 import './Login.css';
@@ -34,10 +35,14 @@ const Login = () => {
       <div className="login-card">
         <div className="login-header">
           <h1>FacturÉclair</h1>
-          <p>Application de Facturation Professionnelle</p>
+          <p>Accès administrateur</p>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
+          <div className="login-subtitle">
+            <p>Veuillez vous authentifier pour continuer</p>
+          </div>
+
           {error && <div className="error-message">{error}</div>}
 
           <div className="form-group">
@@ -48,7 +53,8 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="admin@factureclair.com"
+              placeholder="votre.email@entreprise.com"
+              autoComplete="username"
             />
           </div>
 
@@ -61,6 +67,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="••••••••"
+              autoComplete="current-password"
             />
           </div>
 
@@ -69,13 +76,14 @@ const Login = () => {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'Connexion...' : 'Se connecter'}
+            {loading ? 'Connexion...' : 'Connexion'}
           </button>
-        </form>
 
-        <div className="login-footer">
-          <p>Compte par défaut : admin@factureclair.com / admin123</p>
-        </div>
+          <div className="security-indicator">
+            <FiLock />
+            <span>Connexion sécurisée</span>
+          </div>
+        </form>
       </div>
     </div>
   );
