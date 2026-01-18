@@ -46,7 +46,7 @@
 .search-box input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-bg);
+  box-shadow: 0 0 0 2px var(--primary-bg);
 }
 
 .loading {
@@ -76,7 +76,6 @@
 }
 
 .client-card:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   border-color: var(--border-medium);
 }
@@ -219,7 +218,7 @@
   display: block;
   margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.875rem;
 }
 
@@ -240,7 +239,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-bg);
+  box-shadow: 0 0 0 2px var(--primary-bg);
 }
 
 .modal-actions {

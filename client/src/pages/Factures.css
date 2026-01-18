@@ -44,9 +44,8 @@
 .filter-group label {
   font-size: 0.8125rem;
   color: var(--text-primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 .filter-group select,
@@ -101,7 +100,7 @@
 }
 
 .factures-table thead {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  background: var(--primary);
   color: var(--text-inverse);
 }
 
@@ -116,19 +115,16 @@
 
 .factures-table tbody tr {
   border-bottom: 1px solid var(--border-light);
-  transition: background-color var(--transition-base);
-}
-
-.factures-table tbody tr:nth-child(even) {
-  background-color: var(--bg-main);
+  transition: all var(--transition-base);
 }
 
 .factures-table tbody tr:hover {
   background-color: var(--bg-hover);
+  border-left: 3px solid var(--primary);
 }
 
 .factures-table td {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg);
   font-size: 0.875rem;
   color: var(--text-secondary);
 }

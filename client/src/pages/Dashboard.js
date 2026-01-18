@@ -68,7 +68,7 @@ const Dashboard = () => {
     },
     {
       title: 'Chiffre d\'Affaires',
-      value: `${(stats?.chiffreAffaires || 0).toFixed(2)} €`,
+      value: `${(stats?.chiffreAffaires || 0).toFixed(2)} DH`,
       icon: FiDollarSign,
       colorClass: 'warning',
     },
@@ -124,7 +124,7 @@ const Dashboard = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="mois" />
               <YAxis />
-              <Tooltip formatter={(value) => `${value} €`} />
+              <Tooltip formatter={(value) => `${value} DH`} />
               <Line
                 type="monotone"
                 dataKey="revenus"

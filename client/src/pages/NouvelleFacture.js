@@ -255,7 +255,7 @@ const NouvelleFacture = () => {
                             item.quantite *
                             (1 + item.tva / 100)
                           ).toFixed(2)}{' '}
-                          €
+                          DH
                         </span>
                         <button
                           type="button"
@@ -272,15 +272,15 @@ const NouvelleFacture = () => {
                 <div className="totals-section">
                   <div className="total-row">
                     <span>Total HT:</span>
-                    <span>{totals.totalHT.toFixed(2)} €</span>
+                    <span>{totals.totalHT.toFixed(2)} DH</span>
                   </div>
                   <div className="total-row">
                     <span>Total TVA:</span>
-                    <span>{totals.totalTVA.toFixed(2)} €</span>
+                    <span>{totals.totalTVA.toFixed(2)} DH</span>
                   </div>
                   <div className="total-row final">
                     <span>Total TTC:</span>
-                    <span>{totals.totalTTC.toFixed(2)} €</span>
+                    <span>{totals.totalTTC.toFixed(2)} DH</span>
                   </div>
                 </div>
               </>

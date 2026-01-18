@@ -16,6 +16,24 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [greeting, setGreeting] = useState('');
+
+  // Update greeting based on time
+  React.useEffect(() => {
+    const updateGreeting = () => {
+      const hour = new Date().getHours();
+      if (hour >= 18 || hour < 6) {
+        setGreeting('Bonsoir');
+      } else {
+        setGreeting('Bonjour');
+      }
+    };
+
+    updateGreeting();
+    // Update every minute
+    const interval = setInterval(updateGreeting, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogout = () => {
     clearAuth();
@@ -65,13 +83,18 @@ const Layout = ({ children }) => {
 
       <div className="main-content">
         <header className="topbar">
-          <button className="menu-btn" onClick={() => setSidebarOpen(true)}>
-            <FiMenu />
-          </button>
-          <h1 className="page-title">
-            {menuItems.find((item) => item.path === location.pathname)?.label ||
-              'FacturÉclair'}
-          </h1>
+          <div className="topbar-left">
+            <button className="menu-btn" onClick={() => setSidebarOpen(true)}>
+              <FiMenu />
+            </button>
+            <h1 className="page-title">
+              {menuItems.find((item) => item.path === location.pathname)?.label ||
+                'FacturÉclair'}
+            </h1>
+          </div>
+          <div className="topbar-greeting">
+            {greeting}
+          </div>
         </header>
         <div className="content">{children}</div>
       </div>

@@ -144,7 +144,7 @@ const Produits = () => {
                   <div className="produit-pricing">
                     <div className="price-item">
                       <span className="label">Prix unitaire:</span>
-                      <span className="value">{produit.prix.toFixed(2)} €</span>
+                      <span className="value">{produit.prix.toFixed(2)} DH</span>
                     </div>
                     <div className="price-item">
                       <span className="label">TVA:</span>
@@ -153,7 +153,7 @@ const Produits = () => {
                     <div className="price-item total">
                       <span className="label">Prix TTC:</span>
                       <span className="value">
-                        {(produit.prix * (1 + produit.tva / 100)).toFixed(2)} €
+                        {(produit.prix * (1 + produit.tva / 100)).toFixed(2)} DH
                       </span>
                     </div>
                   </div>
@@ -202,7 +202,7 @@ const Produits = () => {
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>Prix unitaire (€) *</label>
+                    <label>Prix unitaire (DH) *</label>
                     <input
                       type="number"
                       step="0.01"

@@ -315,7 +315,7 @@ const FactureDetail = () => {
                           item.quantite *
                           (1 + item.tva / 100)
                         ).toFixed(2)}{' '}
-                        €
+                        DH
                       </span>
                       <button
                         type="button"
@@ -332,15 +332,15 @@ const FactureDetail = () => {
               <div className="totals-section">
                 <div className="total-row">
                   <span>Total HT:</span>
-                  <span>{totals.totalHT.toFixed(2)} €</span>
+                  <span>{totals.totalHT.toFixed(2)} DH</span>
                 </div>
                 <div className="total-row">
                   <span>Total TVA:</span>
-                  <span>{totals.totalTVA.toFixed(2)} €</span>
+                  <span>{totals.totalTVA.toFixed(2)} DH</span>
                 </div>
                 <div className="total-row final">
                   <span>Total TTC:</span>
-                  <span>{totals.totalTTC.toFixed(2)} €</span>
+                  <span>{totals.totalTTC.toFixed(2)} DH</span>
                 </div>
               </div>
 
@@ -380,13 +380,12 @@ const FactureDetail = () => {
                   <div>
                     <label>Statut:</label>
                     <span
-                      className={`badge ${
-                        facture.statut === 'Payée'
-                          ? 'badge-success'
-                          : facture.statut === 'Non payée'
+                      className={`badge ${facture.statut === 'Payée'
+                        ? 'badge-success'
+                        : facture.statut === 'Non payée'
                           ? 'badge-danger'
                           : 'badge-warning'
-                      }`}
+                        }`}
                     >
                       {facture.statut}
                     </span>
@@ -437,9 +436,9 @@ const FactureDetail = () => {
                           )}
                         </td>
                         <td>{detail.quantite}</td>
-                        <td>{detail.prix_unitaire.toFixed(2)} €</td>
+                        <td>{detail.prix_unitaire.toFixed(2)} DH</td>
                         <td>{detail.tva}%</td>
-                        <td>{montantTTC.toFixed(2)} €</td>
+                        <td>{montantTTC.toFixed(2)} DH</td>
                       </tr>
                     );
                   })}
@@ -450,7 +449,7 @@ const FactureDetail = () => {
                       <strong>Total HT</strong>
                     </td>
                     <td>
-                      <strong>{facture.total_ht.toFixed(2)} €</strong>
+                      <strong>{facture.total_ht.toFixed(2)} DH</strong>
                     </td>
                   </tr>
                   <tr>
@@ -458,7 +457,7 @@ const FactureDetail = () => {
                       <strong>Total TVA</strong>
                     </td>
                     <td>
-                      <strong>{facture.total_tva.toFixed(2)} €</strong>
+                      <strong>{facture.total_tva.toFixed(2)} DH</strong>
                     </td>
                   </tr>
                   <tr className="total-row">
@@ -467,7 +466,7 @@ const FactureDetail = () => {
                     </td>
                     <td>
                       <strong className="total-ttc">
-                        {facture.total_ttc.toFixed(2)} €
+                        {facture.total_ttc.toFixed(2)} DH
                       </strong>
                     </td>
                   </tr>

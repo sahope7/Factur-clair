@@ -182,10 +182,10 @@ const Factures = () => {
                       <td>
                         {new Date(facture.date).toLocaleDateString('fr-FR')}
                       </td>
-                      <td>{facture.total_ht.toFixed(2)} €</td>
-                      <td>{facture.total_tva.toFixed(2)} €</td>
+                      <td>{facture.total_ht.toFixed(2)} DH</td>
+                      <td>{facture.total_tva.toFixed(2)} DH</td>
                       <td className="total-ttc">
-                        {facture.total_ttc.toFixed(2)} €
+                        {facture.total_ttc.toFixed(2)} DH
                       </td>
                       <td>
                         <span
