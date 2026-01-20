@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '../components/Layout';
 import {
   getClients,
@@ -23,11 +23,7 @@ const Clients = () => {
     ice: '',
   });
 
-  useEffect(() => {
-    loadClients();
-  }, [search]);
-
-  const loadClients = async () => {
+  const loadClients = useCallback(async () => {
     try {
       const response = await getClients(search);
       setClients(response.data);
@@ -36,7 +32,11 @@ const Clients = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search]);
+
+  useEffect(() => {
+    loadClients();
+  }, [loadClients]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

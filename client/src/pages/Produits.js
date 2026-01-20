@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '../components/Layout';
 import {
   getProduits,
@@ -22,11 +22,7 @@ const Produits = () => {
     tva: '20',
   });
 
-  useEffect(() => {
-    loadProduits();
-  }, [search]);
-
-  const loadProduits = async () => {
+  const loadProduits = useCallback(async () => {
     try {
       const response = await getProduits(search);
       setProduits(response.data);
@@ -35,7 +31,11 @@ const Produits = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search]);
+
+  useEffect(() => {
+    loadProduits();
+  }, [loadProduits]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

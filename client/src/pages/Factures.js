@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import {
@@ -6,7 +6,7 @@ import {
   deleteFacture,
   downloadFacturePDF,
 } from '../services/api';
-import { FiPlus, FiSearch, FiEye, FiTrash2, FiDownload, FiFilter, FiX } from 'react-icons/fi';
+import { FiPlus, FiSearch, FiEye, FiTrash2, FiDownload, FiFilter } from 'react-icons/fi';
 import './Factures.css';
 
 const Factures = () => {
@@ -21,11 +21,7 @@ const Factures = () => {
   });
   const [showFilters, setShowFilters] = useState(false);
 
-  useEffect(() => {
-    loadFactures();
-  }, [search, filters]);
-
-  const loadFactures = async () => {
+  const loadFactures = useCallback(async () => {
     try {
       const params = { search };
       if (filters.statut) params.statut = filters.statut;
@@ -39,7 +35,11 @@ const Factures = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search, filters]);
+
+  useEffect(() => {
+    loadFactures();
+  }, [loadFactures]);
 
   const handleDelete = async (id) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cette facture ?')) {
