@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { createFacture, getClients, getProduits } from '../services/api';
@@ -17,7 +17,11 @@ const NouvelleFacture = () => {
     produits: [],
   });
 
-  const loadData = useCallback(async () => {
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
     try {
       const [clientsRes, produitsRes] = await Promise.all([
         getClients(),
@@ -30,11 +34,7 @@ const NouvelleFacture = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -207,6 +207,7 @@ const NouvelleFacture = () => {
               <>
                 <div className="produits-list">
                   {formData.produits.map((item, index) => {
+                    const produit = produits.find((p) => p.id === item.produit_id);
                     return (
                       <div key={index} className="produit-row">
                         <select

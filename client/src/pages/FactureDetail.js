@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import {
@@ -35,7 +35,11 @@ const FactureDetail = () => {
     produits: [],
   });
 
-  const loadData = useCallback(async () => {
+  useEffect(() => {
+    loadData();
+  }, [id]);
+
+  const loadData = async () => {
     try {
       const [factureRes, clientsRes, produitsRes] = await Promise.all([
         getFacture(id),
@@ -65,11 +69,7 @@ const FactureDetail = () => {
     } finally {
       setLoading(false);
     }
-  }, [id]);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -172,6 +172,7 @@ const FactureDetail = () => {
   }
 
   const totals = calculateTotals();
+  const currentFacture = editing ? { ...facture, ...totals } : facture;
 
   return (
     <Layout>
@@ -266,6 +267,7 @@ const FactureDetail = () => {
 
               <div className="produits-list">
                 {formData.produits.map((item, index) => {
+                  const produit = produits.find((p) => p.id === item.produit_id);
                   return (
                     <div key={index} className="produit-row">
                       <select

@@ -6,7 +6,7 @@ import {
   deleteFacture,
   downloadFacturePDF,
 } from '../services/api';
-import { FiPlus, FiSearch, FiEye, FiTrash2, FiDownload, FiFilter } from 'react-icons/fi';
+import { FiPlus, FiSearch, FiEye, FiTrash2, FiDownload, FiFilter, FiX } from 'react-icons/fi';
 import './Factures.css';
 
 const Factures = () => {
@@ -21,7 +21,11 @@ const Factures = () => {
   });
   const [showFilters, setShowFilters] = useState(false);
 
-  const loadFactures = useCallback(async () => {
+  useEffect(() => {
+    loadFactures();
+  }, [search, filters]);
+
+  const loadFactures = async () => {
     try {
       const params = { search };
       if (filters.statut) params.statut = filters.statut;
@@ -35,11 +39,7 @@ const Factures = () => {
     } finally {
       setLoading(false);
     }
-  }, [search, filters]);
-
-  useEffect(() => {
-    loadFactures();
-  }, [loadFactures]);
+  };
 
   const handleDelete = async (id) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cette facture ?')) {
